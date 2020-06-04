@@ -24,9 +24,9 @@ int LedFloor3 = 0;
 
 void setup()
 {
-  pinMode(A5, INPUT);
-  pinMode(A4, INPUT);
-  pinMode(A3, INPUT);
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A2, OUTPUT);
   pinMode(6, INPUT);
   pinMode(11, INPUT);
   pinMode(3, INPUT);
@@ -38,25 +38,25 @@ void setup()
   pinMode(12, OUTPUT);
   pinMode(2, OUTPUT);
   pinMode(4, OUTPUT);
-  pinMode(8, OUTPUT);
-  pinMode(9, OUTPUT);
-  pinMode(10, OUTPUT);
+  pinMode(8, INPUT);
+  pinMode(9, INPUT);
+  pinMode(10,INPUT);
 }
 
 void loop()
 {
-  D1andU1 = digitalRead(A5);
-  D2andU2 = digitalRead(A4);
-  D3andU3 = digitalRead(A3);
+  D1andU1 = digitalRead(8);
+  D2andU2 = digitalRead(9);
+  D3andU3 = digitalRead(10);
   PushButton_floor1 = digitalRead(6);
   PushPutton_floor2 = digitalRead(11);
   PushButton_floor3 = digitalRead(3);
   LimitSensor_floor1 = digitalRead(7);
   LimitSensor_floor2 = digitalRead(13);
   LimitSensor_floor3 = digitalRead(5);
-  LedFloor1 = digitalRead(8);
-  LedFloor2 = digitalRead(9);
-  LedFloor3 = digitalRead(10);
+  LedFloor1 = digitalRead(A0);
+  LedFloor2 = digitalRead(A1);
+  LedFloor3 = digitalRead(A2);
 
   //if the user push up or down from first floor
   if (D1andU1 == HIGH) {
@@ -126,18 +126,18 @@ void loop()
 void LedsSystem()
 {
   if (LimitSensor_floor1 == HIGH) {
-    digitalWrite(8, HIGH);
+    digitalWrite(A0, HIGH);
     delay(1000); // Wait for 1000 millisecond(s)
-    digitalWrite(8, LOW);
+    digitalWrite(A0, LOW);
   }
   if (LimitSensor_floor2 == HIGH) {
-    digitalWrite(9, HIGH);
+    digitalWrite(A1, HIGH);
     delay(1000); // Wait for 1000 millisecond(s)
-    digitalWrite(9, LOW);
+    digitalWrite(A1, LOW);
   }
   if (LimitSensor_floor3 == HIGH) {
-    digitalWrite(10, HIGH);
+    digitalWrite(A2, HIGH);
     delay(1000); // Wait for 1000 millisecond(s)
-    digitalWrite(10, LOW);
+    digitalWrite(A2, LOW);
   }
 }
